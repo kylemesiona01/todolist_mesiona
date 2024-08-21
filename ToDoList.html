@@ -4,17 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional To-Do List</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px;
+            background-size: cover;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+    max-width: 100%; /* Ensure the image scales down within its container */
+    height: auto;    /* Maintain aspect ratio */
+    margin-bottom: 10px;
+    width: auto;     /* Allow width to adjust automatically */
+    display: inline-block;  /* Prevents any inline spacing issues */
+}
+
+@media (max-width: 768px) {
+    .header img {
+        max-width: 80%; /* Scale image to 80% of its container width on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .header img {
+        max-width: 60%; /* Scale image to 60% of its container width on small screens */
+    }
+}
+
+        .input-group {
+            flex-wrap: wrap; /* Allow input and button to wrap on small screens */
+        }
+
+        #task-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ff6f00;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Ensure input takes full width of its container */
+}
+
+#task-input:focus {
+    border-color: #e65c00;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    #task-input {
+        font-size: 14px; /* Slightly smaller font size on smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    #task-input {
+        font-size: 12px; /* Further reduce font size for very small screens */
+        padding: 8px; /* Reduce padding for very small screens */
+    }
+}
+
+        #add-task-button {
+            background-color: #ff6f00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #add-task-button:hover {
+            background-color: #e65c00;
+        }
+
+        #task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-item {
+            background-color: #ffebee;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .task-item span {
+            flex: 1;
+            padding: 5px;
+        }
+
+        .task-item button {
+            margin: 5px;
+        }
+
+        @media (max-width: 576px) {
+            #add-task-button {
+                width: 100%; /* Full width on small screens */
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .input-group {
+                flex-direction: column; /* Stack input and button vertically */
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>To do list</h1>
-        <div class="input-container">
-            <input type="text" id="task-input" placeholder="Add a new task...">
-            <button id="add-task-button">Add</button>
+        <div class="header">
+            <img src="University_of_Mindanao_Logo.png" alt="To-Do List Logo">
+            <h1>To-Do List</h1>
         </div>
-        <ul id="task-list"></ul>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="task-input" placeholder="Add a new task...">
+            <div class="input-group-append">
+                <button class="btn btn-add" id="add-task-button">Add</button>
+            </div>
+        </div>
+        <ul id="task-list" class="list-unstyled"></ul>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
